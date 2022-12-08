@@ -1,7 +1,8 @@
 name: Java CI
+run-name: Java CI on ${{ github.ref}} by ${{ github.actor }}
 on: [push]
 jobs:
-  build:
+  Maven-Build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
