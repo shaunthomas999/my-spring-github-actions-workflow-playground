@@ -24,7 +24,7 @@ jobs:
           name: Package
           path: staging
           retention-days: 5 # Default 90 (days)
-      - name: Run PMD and upload result
+      - name: Run PMD
         id: pmd
         uses: pmd/pmd-github-action@967a81f8b657c87f7c3e96b62301cb1a48efef29
         with:
