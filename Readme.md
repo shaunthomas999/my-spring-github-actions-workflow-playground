@@ -9,3 +9,7 @@
 ## Checklist (Personal)
 
 * git config user.email set - Y
+
+## Reference
+
+* https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2004-Readme.md

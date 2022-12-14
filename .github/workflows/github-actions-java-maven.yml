@@ -3,6 +3,7 @@ run-name: Java CI on ${{ github.ref}} by ${{ github.actor }}
 on: [push]
 jobs:
   Maven-Build:
+    # https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2004-Readme.md
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
