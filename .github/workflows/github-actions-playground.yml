@@ -5,9 +5,52 @@ on:
   workflow_dispatch:
   push:
 
+#env:
+#  ENV_LIST: ${{ vars.DAILY_DEPLOY_ENV_LIST }}
+
+#jobs:
+#  GitHub-Actions-Playground:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Display environment
+#        run: echo "Deploying to ${{ fromJSON(format('[{0}]', join(vars.DAILY_DEPLOY_ENV_LIST, '","'))) }}"
+
+#jobs:
+#  setup-matrix:
+#    runs-on: ubuntu-latest
+#    outputs:
+#      matrix: ${{ steps.set-matrix.outputs.matrix }}
+#    steps:
+#      - name: Parse ENV_LIST into JSON
+#        id: set-matrix
+#        run: |
+#          # Convert comma-separated list into JSON array
+#          MATRIX=$(echo '["'${{ env.ENV_LIST }}'"' | sed 's/,/","/g')
+#          echo "Matrix: $MATRIX"
+#          echo "::set-output name=matrix::$MATRIX"
+#
+#  run-matrix:
+#    needs: setup-matrix
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        environment: ${{ fromJson(needs.setup-matrix.outputs.matrix) }}
+#    steps:
+#      - name: Run for environment
+#        run: |
+#          echo "Running for environment: ${{ matrix.environment }}"
+
 jobs:
-  GitHub-Actions-Playground:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        env_name: ${{ fromJson(format('[{0}]', join(split(vars.DAILY_DEPLOY_ENV_LIST, ','), '","'))) }} # Split and format the variable into an array
+
     steps:
-      - name: Display environment
-        run: echo "Deploying to ${{ fromJSON(format('[{0}]', join(vars.DAILY_DEPLOY_ENV_LIST, '","'))) }}"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Print Environment Name
+        run: |
+          echo "Running for environment: ${{ matrix.env_name }}"
