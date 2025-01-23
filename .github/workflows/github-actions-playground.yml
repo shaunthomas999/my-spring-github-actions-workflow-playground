@@ -43,10 +43,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
+#    strategy:
+#      matrix:
 #        env_name: ${{ fromJson(format('[{0}]', join(split(vars.DAILY_DEPLOY_ENV_LIST, ','), '","'))) }} # Split and format the variable into an array
-        env_name: ${{ fromJson(vars.DAILY_DEPLOY_ENV_LIST) }}
+#        env_name: ${{ fromJson(vars.DAILY_DEPLOY_ENV_LIST) }}
 
     steps:
       - name: Checkout code
@@ -54,4 +54,4 @@ jobs:
 
       - name: Print Environment Name
         run: |
-          echo "Running for environment: ${{ matrix.env_name }}"
+          echo "Running for environment: ${{ vars.DAILY_DEPLOY_ENV_LIST }}"
