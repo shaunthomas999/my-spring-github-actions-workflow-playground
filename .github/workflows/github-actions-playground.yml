@@ -1,0 +1,15 @@
+name: GitHub Actions Playground
+run-name: GitHub Actions Playground ⚙️
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  GitHub-Actions-Playground:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display environment
+        run: |
+          VLIST1=${{ fromJSON(format('[{0}]', join(vars.DAILY_DEPLOY_ENV_LIST, '","'))) }}
+          echo "Deploying to ${{ VLIST1 }}"

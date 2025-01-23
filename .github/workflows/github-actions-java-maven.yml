@@ -1,8 +1,10 @@
 name: Java CI
 run-name: Java CI on ${{ github.ref}} by ${{ github.actor }}
+
 on:
   workflow_dispatch:
   push:
+
 jobs:
   Maven-Build:
     # https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2004-Readme.md
