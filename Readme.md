@@ -2,13 +2,13 @@
 
 ## Setup
 
-* Java 17+
+* Java 21+
 * Maven 3.x
-* Spring-boot 3.x
+* Spring-boot 3.4.x
 
 ## Checklist (Personal)
 
-* git config user.email set - Y
+* `git config user.email shaunthomas999@gmail.com`
 
 ## Reference
 
